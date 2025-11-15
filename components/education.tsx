@@ -51,16 +51,16 @@ export function Education() {
         <div className="absolute -bottom-20 -left-40 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div ref={containerRef} className="relative z-10 max-w-6xl mx-auto px-6">
-        {/* Section Header */}
-        <div data-animate className="opacity-0 translate-y-10 transition-all duration-700 mb-16 text-center">
-          <span className="text-accent font-medium text-sm uppercase tracking-wider">Learning Journey</span>
-          <h2 className="text-5xl md:text-6xl font-bold text-foreground mt-3 leading-tight">Education</h2>
+      <div ref={containerRef} className="relative z-10 max-w-6xl mx-auto px-4 md:px-6">
         
+        {/* Header */}
+        <div data-animate className="opacity-0 translate-y-10 transition-all duration-700 mb-12 text-center">
+          <span className="text-accent font-medium text-sm uppercase tracking-wider">Learning Journey</span>
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mt-3 leading-tight">Education</h2>
         </div>
 
-        {/* Education Timeline */}
-        <div className="space-y-8">
+        {/* Education Cards */}
+        <div className="space-y-6 md:space-y-8">
           {educationData.map((edu, index) => (
             <div
               key={edu.id}
@@ -68,34 +68,55 @@ export function Education() {
               className="opacity-0 translate-y-10 transition-all duration-700 group"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="relative bg-background border border-border rounded-xl p-8 hover:border-accent/50 transition-all hover:shadow-lg hover:shadow-accent/10">
-                {/* Left border accent */}
+              <div className="relative bg-background border border-border rounded-xl p-6 md:p-8 hover:border-accent/50 transition-all hover:shadow-lg hover:shadow-accent/10">
+
+                {/* Left Accent Line */}
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-accent via-accent/50 to-transparent rounded-l-xl"></div>
 
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-4 mb-4">
+
+                  {/* Icon + Institute */}
                   <div className="flex items-start gap-4">
-                    <div className="mt-1 p-3 bg-accent/10 rounded-lg">
+                    <div className="p-3 bg-accent/10 rounded-lg">
                       <BookOpen className="text-accent" size={24} />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-foreground">{edu.institution}</h3>
-                      <p className="text-accent font-medium mt-1">
+                      <h3 className="text-xl md:text-2xl font-bold text-foreground">{edu.institution}</h3>
+                      <p className="text-accent font-medium mt-1 text-sm md:text-base">
                         {edu.degree || edu.level} {edu.field && `in ${edu.field}`}
                       </p>
+                      {edu.description && (
+    <p className="text-muted-foreground mt-2 text-sm md:text-base">
+      {edu.description}
+    </p>
+  )}
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="flex items-center gap-2 text-muted-foreground mb-2">
-                      <Calendar size={16} />
-                      <span className="text-sm">{edu.duration}</span>
-                    </div>
-                    <div className="text-2xl font-bold text-accent">
-                      {edu.cgpa || edu.percentage}
-                    </div>
-                  </div>
+
+                  {/* Duration + Score */}
+                <div className="text-left md:text-right flex items-center md:flex-col gap-3 md:gap-1 whitespace-nowrap">
+
+  {/* Duration */}
+  <div className="flex items-center gap-2 text-muted-foreground text-sm">
+    <Calendar size={16} />
+    <span>{edu.duration}</span>
+  </div>
+
+  {/* Score */}
+  <div className="text-xl md:text-2xl font-bold text-accent">
+    {edu.cgpa || edu.percentage}
+  </div>
+
+</div>
+
+
                 </div>
 
-                <p className="text-muted-foreground leading-relaxed ml-16">{edu.description}</p>
+                {/* {edu.description && (
+                  <p className="text-muted-foreground leading-relaxed md:ml-16 text-sm md:text-base">
+                    {edu.description}
+                  </p>
+                )} */}
               </div>
             </div>
           ))}

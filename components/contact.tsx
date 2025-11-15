@@ -55,7 +55,7 @@ export function Contact() {
               Have a question or project proposal? Feel free to send me an email directly.
             </p>
             <a
-              href="princepatel5598@gmail.com"
+              href="mailto:princepatel5598@gmail.com"
               className="inline-block px-6 py-3 rounded-lg bg-accent text-accent-foreground font-medium hover:shadow-lg hover:shadow-accent/50 transition-all transform hover:scale-105"
             >
               Send Email
